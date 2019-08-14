@@ -1,0 +1,12 @@
+{
+  "name": "asana-subscriber",
+  "version": "1.0.0",
+  "scripts": {
+    "ngrok": "~/workspace/ngrok http 3000"
+  },
+  "dependencies": {
+    "axios": "0.19.0",
+    "body-parser": "1.19.0",
+    "express": "4.17.1"
+  }
+}
