@@ -2,6 +2,9 @@
   "name": "asana-subscriber",
   "version": "1.0.0",
   "scripts": {
+    "start": "node index.js",
+    "deploy": "gcloud app deploy app.yaml -q",
+    "deploy-cron": "gcloud app deploy cron.yaml -q",
     "ngrok": "~/workspace/ngrok http 3000"
   },
   "dependencies": {
