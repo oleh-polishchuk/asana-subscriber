@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 /* Routes */
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/', (req, res) => res.send('Hello World! It`s asana subscriber app version: "1.0.1"'));
 
 app.post('/receive-webhook/core-brands-ndc-7654', (req, res) => {
     if (isEstablishingWebHookProcess(req)) {
