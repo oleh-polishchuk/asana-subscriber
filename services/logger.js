@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const log = logFn => text => {
-    fs.appendFile('default.log', `[asana-subscriber] ${text}\n`, 'utf8', () => {});
+    fs.appendFile('/tmp/default.log', `[asana-subscriber] ${text}\n`, 'utf8', () => {});
     logFn(`[asana-subscriber] ${text}`);
 };
 
