@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const fs = require('fs');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -11,9 +12,15 @@ const { isEstablishingWebHookProcess, handleHandShake } = require('./services/we
 /* Application */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
 
 /* Routes */
-app.get('/', (req, res) => res.send('Hello World! It`s asana subscriber app version: "1.0.1"'));
+app.get('/', (req, res) => fs.readFile('default.log', 'utf8', (err, logs) => {
+    res.render('index', {
+        version: '1.0.1',
+        logs: logs,
+    });
+}));
 
 app.post('/receive-webhook/core-brands-ndc-7654', (req, res) => {
     if (isEstablishingWebHookProcess(req)) {
@@ -65,4 +72,4 @@ app.post('/receive-webhook/core-sprint-c-ndc-7654', (req, res) => {
     res.sendStatus(200);
 });
 
-app.listen(process.env.PORT, () => console.log(`Example app listening on port ${process.env.PORT}!`));
+app.listen(process.env.PORT, () => log(`Example app listening on port ${process.env.PORT}!`));

@@ -1,3 +1,10 @@
-module.exports.log = msg => console.log(`[asana-subscriber] ${msg}`);
+const fs = require('fs');
 
-module.exports.error = msg => console.error(`[asana-subscriber] ${msg}`);
+const log = logFn => text => {
+    fs.appendFile('default.log', `[asana-subscriber] ${text}\n`, 'utf8', () => {});
+    logFn(`[asana-subscriber] ${text}`);
+};
+
+module.exports.log = msg => log(console.log)(msg);
+
+module.exports.error = msg => log(console.error)(msg);
